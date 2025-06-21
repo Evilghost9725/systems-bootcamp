@@ -1,1 +1,17 @@
+cmake_minimum_required(VERSION 3.14)  # Specify the minimum CMake version
 
+project(MyApp LANGUAGES CXX)          # Define the project and language
+
+add_executable(myapp main.cpp)        # Create an executable from source
+
+target_include_directories(myapp PRIVATE include)  # Add header file path
+
+target_link_libraries(myapp PRIVATE mylib)         # Link with a library
+
+add_subdirectory(lib)                  # Add a subdirectory with its own CMakeLists.txt
+
+install(TARGETS myapp DESTINATION bin)  # Define install location
+
+enable_testing()                       # Enable testing functionality
+
+add_test(NAME BasicTest COMMAND myapp) # Define a simple test
